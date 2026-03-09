@@ -1,0 +1,11 @@
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\ga\FitnessCalculator.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\ga\Gene.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\service\TimetableService.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\controller\TimetableController.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\ga\TimeTableGeneticAlgorithm.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\dto\ScheduleOption.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\dto\SubjectGroupRequest.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\ga\Chromosome.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\BackendApplication.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\controller\ScheduleResult.java
+D:\NLCS\backend\backend\src\main\java\com\tkb\backend\dto\ScheduleDTO.java

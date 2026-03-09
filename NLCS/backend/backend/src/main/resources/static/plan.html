@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lập kế hoạch học tập</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="main-layout">
+
+   <!-- CỘT 1 -->
+   <aside class="column column-update">
+        <div class="header-blue">1. CẬP NHẬT KHHT</div>
+
+        <div class="search-area">
+            <input type="text" id="subjectInput"
+                   placeholder="Nhập mã hoặc tên môn học...">
+
+            <select id="semesterSelect">
+                <option value="Năm học 2025-2026 Học kỳ I">
+                    HK 1 (2025-2026)
+                </option>
+                <option value="Năm học 2025-2026 Học kỳ II">
+                    HK 2 (2025-2026)
+                </option>
+            </select>
+
+            <button id="btnAdd" class="btn-add">
+                Thêm môn học
+            </button>
+        </div>
+   </aside>
+
+   <!-- CỘT 2 -->
+   <section class="column column-view">
+        <div class="header-green">2. KHHT TOÀN KHÓA</div>
+        <div id="planAccordion"></div>
+   </section>
+
+   <!-- CỘT 3 -->
+   <section class="column column-selection">
+        <div class="header-cyan">3. XẾP LỊCH CHI TIẾT</div>
+        <div id="registrationArea"></div>
+   </section>
+
+</div>
+
+<!-- MODAL -->
+<div id="groupModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span id="modalSubjectName"></span>
+            <span class="close-btn" id="btnCloseModal">&times;</span>
+        </div>
+        <div id="groupOptions"></div>
+    </div>
+</div>
+
+<!-- BUTTON BUILDER -->
+<button id="btnBuilder"
+        style="width:100%;background:green;color:white;padding:12px;margin-top:10px">
+    Lập Thời Khóa Biểu
+</button>
+
+<!-- SCRIPT -->
+<script src="js/data.js"></script>
+<script src="js/selection.js"></script>
+<script src="js/plan.js"></script>
+
+<script>
+
+document.getElementById("btnAdd")
+    .addEventListener("click", addToPlan);
+
+document.getElementById("btnCloseModal")
+    .addEventListener("click", closeModal);
+
+document.getElementById("btnBuilder")
+    .addEventListener("click", goToBuilder);
+
+
+/* ===================================
+   FIX QUAN TRỌNG: LƯU DỮ LIỆU CHO BUILDER
+=================================== */
+function goToBuilder() {
+
+    const selected =
+        JSON.parse(localStorage.getItem("selectedGroups")) || [];
+
+    if (selected.length === 0) {
+        alert("Chưa chọn nhóm môn học!");
+        return;
+    }
+
+    console.log("SELECTED GROUPS:", selected);
+
+    // Chuẩn hóa dữ liệu gửi sang builder
+    const formatted = selected.map(s => {
+
+        // Nếu có schedules (dữ liệu dạng backend)
+        if (s.schedules && s.schedules.length > 0) {
+            return {
+                subjectId: s.subjectId,
+                group: s.group,
+                day: s.schedules[0].day,
+                slots: s.schedules[0].slots
+            };
+        }
+
+        // Nếu đã có day & slots trực tiếp
+        return {
+            subjectId: s.subjectId,
+            group: s.group,
+            day: s.day,
+            slots: s.slots
+        };
+    });
+
+    // 🔥 LƯU CHO BUILDER
+    localStorage.setItem(
+        "planSubjects",
+        JSON.stringify(formatted)
+    );
+
+    console.log("SAVED FOR BUILDER:", formatted);
+
+    window.location.href = "builder.html";
+}
+
+</script>
+
+</body>
+</html>

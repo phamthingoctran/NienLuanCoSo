@@ -1,0 +1,304 @@
+
+/* Login */
+.login-page { display: flex; justify-content: center; align-items: center; height: 100vh; }
+.login-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+.form-group { margin-bottom: 15px; }
+input { padding: 10px; width: 250px; border: 1px solid #ddd; border-radius: 4px; }
+
+/* Selection Page */
+header { background: #0056b3; color: white; padding: 15px; text-align: center; font-weight: bold; }
+.selection-container { display: flex; justify-content: space-around; padding: 20px; gap: 20px; }
+.column { width: 45%; }
+.column-header { background: #28a745; color: white; padding: 10px; font-weight: bold; }
+.list-box { background: white; border: 1px solid #ccc; height: 250px; overflow-y: auto; }
+.item { padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; }
+.item:hover { background: #f0f7ff; color: #0056b3; }
+
+/* Table */
+.khtt-section { padding: 20px; }
+table { width: 100%; border-collapse: collapse; background: white; margin-bottom: 20px; }
+th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+th { background-color: #f8f9fa; }
+.btn-primary { background: #007bff; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; }
+.btn-primary:hover { background: #0056b3; }
+
+/* Thiết lập nền cho trang Login */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* Đường dẫn: ../ là thoát khỏi thư mục css, sau đó vào images */
+    background: url('../images/background.jpg') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+/* Làm cho form đăng nhập nổi bật trên nền hình ảnh */
+.login-card {
+    background: rgba(255, 255, 255, 0.9); /* Trắng trong suốt nhẹ */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 350px;
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ nền phía sau card */
+}
+
+.logo-ctu {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #0056b3;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* Đảm bảo padding không làm tràn khung */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+/* BUIDER*/
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f3f6fb;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* CỘT TRÁI */
+.left-panel {
+  width: 25%;
+  background: white;
+  padding: 20px;
+  border-right: 2px solid #ddd;
+}
+
+.left-panel h2 {
+  margin-top: 0;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #1e90ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0b63c7;
+}
+
+ul {
+  margin-top: 15px;
+}
+
+/* CỘT PHẢI */
+.right-panel {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #aaa;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background: #dbe9ff;
+}
+.scroll-box {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Định dạng các đường link khóa học */
+.course-link {
+    text-decoration: none;
+    color: #0d6efd;
+    display: inline-block;
+    padding: 3px 0;
+    transition: 0.2s;
+}
+
+.course-link:hover {
+    color: #ffc107 !important;
+    text-decoration: underline;
+}
+
+/* Màu vàng khi khóa đang được nhấn */
+.course-link.active-course {
+    color: #ffc107 !important;
+    font-weight: bold;
+}
+
+/* Hiệu ứng chọn cho list-group */
+.list-group-item.active {
+    background-color: #e7f1ff !important;
+    color: #0d6efd !important;
+    border-left: 4px solid #0d6efd !important;
+}
+
+#main-title {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}.right {
+    text-align: right;
+}
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { margin: 0; background-color: #f0f2f5; }
+
+.main-layout {
+    display: flex;
+    height: 100vh;
+    padding: 15px;
+    gap: 15px;
+}
+
+.column {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header màu sắc */
+.header-blue { background: #007bff; color: white; padding: 15px; font-weight: bold; text-align: center; }
+.header-green { background: #28a745; color: white; padding: 15px; font-weight: bold; text-align: center; }
+.header-cyan { background: #17a2b8; color: white; padding: 15px; font-weight: bold; text-align: center; }
+
+/* Search Area */
+.search-area { padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+input, select { padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+.btn-add { background: #007bff; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 4px; }
+
+/* Accordion Bảng 2 */
+.semester-item { border-bottom: 1px solid #eee; }
+.sem-header { padding: 12px; background: #f8f9fa; cursor: pointer; display: flex; justify-content: space-between; font-weight: 500; }
+.sem-content { display: none; padding: 10px; background: #fff; }
+
+/* Pop-up */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+.modal-content { background: white; margin: 5% auto; width: 90%; max-width: 450px; border-radius: 8px; overflow: hidden; }
+.modal-header { background: #007bff; color: white; padding: 15px; display: flex; justify-content: space-between; }
+.close-btn { cursor: pointer; font-size: 20px; }
+.group-card { padding: 15px; border-bottom: 1px solid #eee; }
+.conflict { color: red; font-weight: bold; }
+/* Container bao quanh danh sách môn học */
+.subject-list-container {
+    padding: 5px 0;
+}
+
+/* Định dạng từng dòng môn học để chia 2 cột */
+.subject-row {
+    display: flex; /* Sử dụng flexbox */
+    justify-content: space-between; /* Đẩy 2 cột về 2 đầu */
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px inset #f1f1f1;
+    transition: background 0.2s;
+}
+
+.subject-row:hover {
+    background-color: #f9f9f9;
+}
+
+/* Cột thông tin môn học */
+.subject-info {
+    font-size: 14px;
+    color: #333;
+    flex: 1; /* Chiếm tối đa không gian còn lại */
+}
+
+/* Cột tín chỉ riêng biệt */
+.subject-tc {
+    font-weight: bold;
+    color: #444;
+    min-width: 50px; /* Độ rộng cố định cho cột TC */
+    text-align: right; /* Căn chữ sang phải */
+    font-size: 14px;
+}
+
+/* Header học kỳ */
+.total-tc-header {
+    font-weight: bold;
+}
+.btn-transfer {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff; /* Màu xanh giống ảnh 1 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn-transfer:hover {
+    background-color: #0056b3;
+}
+
+.btn-select-group {
+    width: 100%;
+    padding: 8px;
+    background: white;
+    border: 1px solid #17a2b8;
+    color: #17a2b8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-select-group:hover {
+    background: #17a2b8;
+    color: white;
+}

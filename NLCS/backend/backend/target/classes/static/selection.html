@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương trình đào tạo - CTU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .scroll-box {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .italic { font-style: italic; }
+        .course-link { text-decoration: none; color: #0d6efd; transition: 0.3s; }
+        .course-link:hover { color: #eb8f34; padding-left: 10px; }
+        .active-course { font-weight: bold; color: #eb8f34 !important; }
+        .table thead th { vertical-align: middle; background-color: #f8f9fa; }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container-fluid py-4 px-lg-5">
+    <div class="text-center mb-4">
+        <h3 id="main-title" class="fw-bold text-warning text-uppercase">CHƯƠNG TRÌNH ĐÀO TẠO KHÓA 51</h3>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-primary h-100">
+                <div class="card-header bg-primary text-white text-center fw-bold py-2">
+                    <i class="fas fa-university me-2"></i>KHOA ĐÀO TẠO
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush scroll-box" id="list-khoa">
+                        <button class="list-group-item list-group-item-action" onclick="loadNganh(this, 'Trường Công nghệ thông tin và Truyền thông', 3)">Trường Công nghệ thông tin và Truyền thông</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm border-primary h-100">
+                <div class="card-header bg-primary text-white text-center fw-bold py-2">
+                    <i class="fas fa-graduation-cap me-2"></i>NGÀNH ĐÀO TẠO
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush scroll-box" id="list-nganh">
+                        <div class="p-3 text-muted italic">Vui lòng chọn khoa phía bên trái...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5" id="section-mon-hoc" style="display: none;">
+        <div class="col-12">
+            <div class="card shadow border-primary">
+                <div class="card-header bg-primary text-white fw-bold d-flex justify-content-between align-items-center">
+                    <span id="table-header-name">CHI TIẾT MÔN HỌC</span>
+                    <span class="badge bg-light text-primary"></span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle mb-0">
+                        <thead class="text-center">
+                            <tr>
+                                <th style="width: 50px;">STT</th>
+                                <th style="width: 120px;">Mã học phần</th>
+                                <th>Tên học phần</th>
+                                <th style="width: 110px;">Bắt buộc (*)</th>
+                                <th style="width: 100px;">Số tín chỉ</th>
+                                <th style="width: 130px;">Năm học</th>
+                            </tr>
+                        </thead>
+                        <tbody id="body-mon-hoc">
+                            </tbody>
+                    </table>
+            
+                </div> <div id="container-nut-ngoai" class="p-3 bg-white text-center"></div>
+
+            </div> </div>
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 bg-white p-4 rounded shadow-sm">
+        <h5 class="fw-bold mb-3 border-bottom pb-2">Xem các khóa khác:</h5>
+        <ul class="list-unstyled" id="ds-khoa-hoc">
+            <li class="mb-2"><a href="#" class="course-link"><i class="fas fa-chevron-right me-2 small"></i>Chương trình đào tạo Khóa 50</a></li>
+            <li class="mb-2"><a href="#" class="course-link"><i class="fas fa-chevron-right me-2 small"></i>Chương trình đào tạo Khóa 49</a></li>
+            <li class="mb-2"><a href="#" class="course-link"><i class="fas fa-chevron-right me-2 small"></i>Chương trình đào tạo Khóa 48</a></li>
+            <li class="mb-2"><a href="#" class="course-link"><i class="fas fa-chevron-right me-2 small"></i>Chương trình đào tạo Khóa 46 đến Khóa 47</a></li>
+            <li class="mb-2"><a href="#" class="course-link"><i class="fas fa-chevron-right me-2 small"></i>Chương trình đào tạo từ Khóa 40 đến Khóa 45</a></li>
+            <li class="mb-2"><a href="#" class="course-link"><i class="fas fa-chevron-right me-2 small"></i>Chương trình đào tạo từ Khóa 39 trở về sau</a></li>
+
+        </ul>
+    </div>
+</div>
+
+<script src="js/selection.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

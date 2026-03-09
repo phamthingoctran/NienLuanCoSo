@@ -1,0 +1,12 @@
+com\tkb\backend\dto\SubjectGroupRequest.class
+com\tkb\backend\controller\TimetableController.class
+com\tkb\backend\dto\ScheduleOption.class
+com\tkb\backend\dto\ScheduleDTO.class
+com\tkb\backend\ga\FitnessCalculator.class
+com\tkb\backend\ga\TimeTableGeneticAlgorithm.class
+com\tkb\backend\controller\ScheduleResult$ResultItem.class
+com\tkb\backend\BackendApplication.class
+com\tkb\backend\ga\Gene.class
+com\tkb\backend\ga\Chromosome.class
+com\tkb\backend\controller\ScheduleResult.class
+com\tkb\backend\service\TimetableService.class

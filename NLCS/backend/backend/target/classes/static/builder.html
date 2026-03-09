@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>TKB Builder</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    display:flex;
+    margin:0;
+}
+
+#left{
+    width:300px;
+    padding:15px;
+    border-right:1px solid #ccc;
+    overflow-y:auto;
+}
+
+#right{
+    flex:1;
+    padding:15px;
+}
+
+.subject-card{
+    background:#f2f2f2;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:8px;
+}
+
+table{
+    border-collapse: collapse;
+    width:100%;
+}
+
+th,td{
+    border:1px solid #ccc;
+    text-align:center;
+    height:45px;
+}
+
+th{
+    background:#1f4e79;
+    color:white;
+}
+
+button{
+    padding:8px 14px;
+    margin-bottom:10px;
+    margin-right:6px;
+}
+
+.course{
+    background:#cce5ff;
+    border-radius:4px;
+    padding:4px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LEFT PANEL -->
+<div id="left">
+
+<h3>Môn đã chọn</h3>
+
+<div id="selectedSubjects"></div>
+
+</div>
+
+
+
+<!-- RIGHT PANEL -->
+<div id="right">
+
+<button onclick="runGA()">Chạy thuật toán GA</button>
+
+<div id="tkbOptions"></div>
+
+<br>
+
+<table id="scheduleTable">
+
+<thead>
+
+<tr>
+<th>Tiết</th>
+<th>Thứ 2</th>
+<th>Thứ 3</th>
+<th>Thứ 4</th>
+<th>Thứ 5</th>
+<th>Thứ 6</th>
+<th>Thứ 7</th>
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+
+
+<script>
+
+let selectedGroups = [];
+let gaResults = [];
+
+
+
+/* =========================
+   TẠO BẢNG 12 TIẾT
+========================= */
+
+function createTable(){
+
+const tbody = document.querySelector("#scheduleTable tbody");
+
+tbody.innerHTML="";
+
+for(let i=1;i<=12;i++){
+
+    const tr=document.createElement("tr");
+
+    const td=document.createElement("td");
+    td.innerText="Tiết "+i;
+    tr.appendChild(td);
+
+    for(let d=2;d<=7;d++){
+
+        const cell=document.createElement("td");
+
+        cell.id=`cell-${d}-${i}`;
+
+        tr.appendChild(cell);
+    }
+
+    tbody.appendChild(tr);
+}
+
+}
+
+
+
+createTable();
+
+
+
+/* =========================
+   LOAD PLAN TỪ LOCAL STORAGE
+========================= */
+
+function loadFromPlan(){
+
+const data = localStorage.getItem("selectedGroups");
+
+if(!data) return;
+
+selectedGroups = JSON.parse(data);
+
+renderSelected();
+
+}
+
+
+
+function renderSelected(){
+
+const container=document.getElementById("selectedSubjects");
+
+container.innerHTML="";
+
+selectedGroups.forEach(s=>{
+
+    const div=document.createElement("div");
+
+    div.className="subject-card";
+
+    div.innerHTML=`
+        <b>${s.subjectId}</b><br>
+        Nhóm ${s.group}
+    `;
+
+    container.appendChild(div);
+});
+
+}
+
+
+
+loadFromPlan();
+
+
+
+/* =========================
+   CHẠY GENETIC ALGORITHM
+========================= */
+
+function runGA(){
+
+const payload={
+subjects:selectedGroups.map(s=>({
+
+id:s.subjectId,
+name:s.subjectId,
+credits:3,
+slots:s.slots.split("").map(p=>`${s.day}-${p}`)
+
+}))
+};
+
+fetch("http://localhost:8082/api/timetable/run-ga",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(payload)
+
+})
+
+.then(res=>res.json())
+
+.then(data=>{
+
+renderSchedule(data[0].subjects);
+
+})
+
+.catch(err=>{
+
+alert("Lỗi gọi GA");
+
+});
+}
+
+/* =========================
+   HIỂN THỊ NÚT CHỌN TKB
+========================= */
+
+function showOptions(){
+
+const div=document.getElementById("tkbOptions");
+
+div.innerHTML="";
+
+gaResults.forEach((tkb,i)=>{
+
+const btn=document.createElement("button");
+
+btn.innerText="Xem TKB "+(i+1);
+
+btn.onclick=()=>{
+
+renderSchedule(tkb.subjects);
+
+};
+
+div.appendChild(btn);
+
+});
+
+}
+
+
+
+/* =========================
+   RENDER THỜI KHÓA BIỂU
+========================= */
+
+function renderSchedule(subjects){
+
+for(let d=2;d<=7;d++){
+
+for(let i=1;i<=12;i++){
+
+const cell=document.getElementById(`cell-${d}-${i}`);
+
+if(cell) cell.innerHTML="";
+
+}
+
+}
+
+
+
+subjects.forEach(sub=>{
+
+sub.slots.forEach(slot=>{
+
+const parts=slot.split("-");
+
+const day=parts[0];
+
+const period=parts[1];
+
+const cell=document.getElementById(`cell-${day}-${period}`);
+
+if(cell){
+
+cell.innerHTML=`
+<div class="course">
+${sub.name}
+</div>
+`;
+
+}
+
+});
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
